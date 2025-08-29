@@ -1,0 +1,109 @@
+.foods-grid-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.food-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.food-card {
+    width: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.food-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+}
+
+.food-card:hover {
+    transform: scale(1.05);
+}
+
+/* ===== Foods Grid Responsive ===== */
+
+/* Desktop & Laptops (1024px - 1440px) */
+@media (min-width: 1024px) {
+    .foods-grid-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+    }
+
+    .column, .food-column {
+        gap: 20px;
+    }
+
+    .food-card {
+        width: 180px;
+        height: 240px; /* optional fixed height for consistency */
+    }
+
+    .food-card img {
+        height: 140px;
+    }
+}
+
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .foods-grid-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .column, .food-column {
+        width: 80%;
+        gap: 16px;
+    }
+
+    .food-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .food-card img {
+        height: 120px;
+    }
+}
+
+/* Phones (up to 767px) */
+@media (max-width: 767px) {
+    .foods-grid-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .column, .food-column {
+        width: 95%;
+        gap: 12px;
+    }
+
+    .food-card {
+        width: 100%;
+        height: auto;
+        font-size: 0.9rem;
+    }
+
+    .food-card img {
+        height: 100px;
+    }
+}
+

@@ -1,0 +1,492 @@
+/* --- General Reset & Font --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* --- Video Background --- */
+.auth-page {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+}
+
+.auth-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.auth-video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+/* --- Container Centering --- */
+.auth-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+/* --- Form Base --- */
+.auth-form {
+    display: none;
+    background: var(--color-light-text);
+    padding: 4rem;
+    max-width: 38rem;
+    width: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+/* --- Form Heading --- */
+.auth-form h2 {
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    color: var(--color-dark-bg);
+    font-weight: 400;
+}
+
+/* --- Form Group & Floating Labels --- */
+.form-group {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+/* --- Boxed Inputs & Floating Labels --- */
+.auth-form .form-control {
+    background: var(--color-light-text);
+    border: .1rem solid var(--color-dark-bg);
+    border-radius: 0rem;
+    padding: 1rem 1rem;
+    margin-bottom: 3.8rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    color: var(--color-dark-text);
+    display: flex;
+    align-items: center;
+}
+
+.auth-form .form-control:focus {
+    border-color: var(--color-accent);
+    background: var(--color-light-text);
+    box-shadow: 0 0 0.5rem rgba(233, 101, 7, 0.4);
+    outline: none;
+}
+
+.auth-form label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    color: var(--color-dark-text);
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.2s ease all;
+}
+
+.auth-form .form-control:focus + label,
+.auth-form .form-control:not(:placeholder-shown) + label {
+    top: -1.5rem;
+    left: 0.7rem;
+    color: var(--color-accent);
+    background: none;
+}
+
+/* --- Validation Highlight --- */
+.auth-form .form-control.is-invalid {
+    border-color: rgba(255,0,0,0.6);
+}
+
+.auth-form .form-control.is-valid {
+    border-color: var(--color-accent);
+}
+
+/* --- Password Eye Icon --- */
+.password-icon {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--color-dark-bg);
+    transition: color 0.2s ease;
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.password-icon:hover {
+    color: var(--color-accent);
+}
+
+/* --- Buttons --- */
+.auth-form .btn {
+    background: var(--color-dark-bg);
+    color: var(--color-light-text);
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    width: 100%;
+    border-radius: 0;
+    transition: background 0.3s ease;
+}
+
+.auth-form .btn:hover {
+    background: var(--color-accent);
+}
+
+/* --- Form Links --- */
+.form-link {
+    position: relative;
+    cursor: pointer;
+    color: var(--color-dark-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.form-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: .06rem;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.form-link:hover::after {
+    width: 100%;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 576px) {
+    .auth-form {
+        padding: 2rem 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .auth-form h2 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Phone Code Select */
+.form-select,
+.auth-form select {
+    background: var(--color-light-text);
+    border: .1rem solid var(--color-dark-bg);
+    border-radius: 0rem;
+    font-size: 1rem;
+    color: var(--color-dark-bg);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    position: relative;
+}
+
+.auth-form select:focus,
+.form-select:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0.5rem rgba(190,89,16,0.4);
+    outline: none;
+}
+
+.auth-form select option,
+.form-select option {
+    color: var(--color-dark-text);
+}
+
+/* Gender Radio Checkbox*/
+.auth-form input[type="checkbox"],
+.auth-form input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: .1rem solid black;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+.auth-form input[type="checkbox"]:hover,
+.auth-form input[type="radio"]:hover {
+    border-color: var(--color-accent);
+}
+
+.auth-form input[type="checkbox"]:checked,
+.auth-form input[type="radio"]:checked {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.auth-form input[type="checkbox"]:checked::after,
+.auth-form input[type="radio"]:checked::after {
+    content: " ";
+    font-size: 1rem;
+    color: var(--color-dark-text);
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* --- Date Picker --- */
+.auth-form input[type="date"] {
+    border-radius: 0rem;
+    color: var(--color-dark-text);
+    border: .1rem solid var(--color-dark-bg);
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.auth-form input[type="date"]:focus {
+    border-color: var(--color-accent);
+    background: var(--color-light-text);
+    box-shadow: 0 0 0.5rem rgba(233, 101, 7, 0.4);
+    outline: none;
+}
+
+/* ==================== */
+/* --- LOGIN FORM --- */
+#login-form {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ==================== */
+/* --- REGISTER FORM --- */
+#register-form {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: none;
+    width: 50%;
+    align-items: center;
+    align-content: center;
+}
+
+#register-form.active {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 1.8rem;
+}
+
+#register-form .form-control {
+    margin-bottom: 0rem;
+}
+
+#register-form .form-group {
+    width: 100%;
+}
+
+#register-form .full-width {
+    grid-column: 1 / -1;
+}
+
+#register-form .form-control + label {
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+}
+
+#register-form .form-control:focus + label,
+#register-form .form-control:not(:placeholder-shown) + label {
+    top: -1.5rem;
+    left: 0.7rem;
+    color: var(--color-accent);
+    background: none;
+}
+
+#register-form .password-icon {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+}
+
+#register-form label {
+    position: absolute;
+    top: -20%;
+    left: .5rem;
+    color: var(--color-dark-text);
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.2s ease all;
+}
+
+#register-form input[type="radio"] + label,
+#register-form input[type="checkbox"] + label {
+    position: static;
+    transform: none;
+    margin-left: 0.2rem;
+    color: var(--color-dark-text);
+    font-weight: 400;
+    cursor: pointer;
+}
+
+#register-form .form-link {
+    padding-bottom: 0;
+}
+#register-form .btn {
+    margin: 0;
+}
+
+/* ==================== */
+/* --- RESET FORM --- */
+#reset-form {
+    display: grid;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ====== RESPONSIVE LOGIN/REGISTER/RESET FORMS ====== */
+
+/* ---------- Laptop Screens (1024px - 1440px) ---------- */
+@media (min-width: 1024px) and (max-width: 1440px) {
+    #register-form.active {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem 1.5rem;
+    }
+    #register-form {
+        width: 60%;
+    }
+    .auth-form {
+        padding: 3rem;
+        max-width: 40rem;
+    }
+}
+
+/* ---------- Tablets (768px - 1023px) ---------- */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #register-form.active {
+        grid-template-columns: 1fr;
+        gap: 1.5rem 1rem;
+    }
+    #register-form {
+        width: 70%;
+    }
+    .auth-form {
+        padding: 2.5rem;
+        max-width: 35rem;
+    }
+    .auth-form h2 {
+        font-size: 1.8rem;
+        margin-bottom: 3rem;
+    }
+    .form-group {
+        margin-bottom: 2rem;
+    }
+    .auth-form .form-control {
+        padding: 0.9rem 1rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* ---------- Mobile Phones (up to 767px) ---------- */
+@media (max-width: 767px) {
+    #login-form,
+    #register-form,
+    #reset-form {
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    #register-form.active {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .auth-form {
+        padding: 1.5rem 1rem;
+        max-width: 100%;
+    }
+
+    .auth-form h2 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .auth-form .form-control {
+        font-size: 0.9rem;
+        padding: 0.8rem 0.8rem;
+    }
+
+    .password-icon {
+        width: 1.2rem;
+        height: 1.2rem;
+        right: 0.8rem;
+    }
+
+    #register-form label {
+        font-size: 0.9rem;
+    }
+
+    #register-form input[type="radio"] + label,
+    #register-form input[type="checkbox"] + label {
+        font-size: 0.9rem;
+    }
+
+    .auth-form .btn {
+        font-size: 0.95rem;
+        padding: 0.65rem;
+    }
+}
+
+

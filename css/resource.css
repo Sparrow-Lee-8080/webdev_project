@@ -1,0 +1,129 @@
+/* Resources Page Styles */
+.resources-page {
+    padding: 12rem 0;
+    background-color: #f4f4f9;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    color: #222;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.resource-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+.resource-card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #e06106;
+}
+
+.resource-card p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.resource-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.resource-card ul li {
+    margin-bottom: 0.8rem;
+}
+
+.resource-card ul li a {
+    text-decoration: none;
+    color: #222;
+    transition: color 0.3s ease;
+}
+
+.resource-card ul li a:hover {
+    color: #e06106;
+}
+
+/* --- Tablet Styles (≤1024px) --- */
+@media (max-width: 1024px) {
+    .resources-page {
+        padding: 5rem 2rem; /* reduce vertical padding slightly */
+    }
+
+    .page-title {
+        font-size: 2.4rem; /* smaller title for tablet */
+    }
+
+    .resources-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* more columns fit */
+        gap: 2rem; /* slightly smaller gap */
+    }
+
+    .resource-card {
+        padding: 1.8rem;
+    }
+
+    .resource-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .resource-card p {
+        font-size: 0.95rem;
+    }
+
+    .resource-card ul li a {
+        font-size: 0.95rem;
+    }
+}
+
+/* --- Phone Styles (≤768px) --- */
+@media (max-width: 768px) {
+    .resources-page {
+        padding: 3rem 1rem; /* tighter padding for phone */
+    }
+
+    .page-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .resources-grid {
+        grid-template-columns: 1fr; /* single column on mobile */
+        gap: 1.5rem;
+    }
+
+    .resource-card {
+        padding: 1.5rem;
+    }
+
+    .resource-card h2 {
+        font-size: 1.4rem;
+    }
+
+    .resource-card p {
+        font-size: 0.9rem;
+    }
+
+    .resource-card ul li a {
+        font-size: 0.9rem;
+    }
+}
